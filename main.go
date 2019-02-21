@@ -33,7 +33,7 @@ func processDir(dir string) {
 			continue
 		}
 		extSplit := strings.Split(f.Name(), ".")
-		if strings.ToLower(extSplit[len(extSplit)-1]) == "go" {
+		if strings.ToLower(extSplit[len(extSplit)-1]) == "go" && strings.ToLower(extSplit[len(extSplit)-2]) != "pb"{
 			processFile(paths.Combine(dir, f.Name()))
 		}
 	}
