@@ -33,13 +33,13 @@ func processDir(dir string) {
 			continue
 		}
 		extSplit := strings.Split(f.Name(), ".")
-		if strings.ToLower(extSplit[len(extSplit)-1]) == "go" && strings.ToLower(extSplit[len(extSplit)-2]) != "pb"{
+		if strings.ToLower(extSplit[len(extSplit)-1]) == "go" && strings.ToLower(extSplit[len(extSplit)-2]) != "pb" {
 			processFile(paths.Combine(dir, f.Name()))
 		}
 	}
 
 	for _, d := range directories {
-		if strings.TrimSpace(d.Name()) == "" {
+		if name := strings.TrimSpace(d.Name()); name == "" || name == "vendor" {
 			continue
 		}
 		dirName := paths.Combine(dir, d.Name())
